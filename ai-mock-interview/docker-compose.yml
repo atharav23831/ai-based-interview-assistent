@@ -1,0 +1,92 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: aimock_postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres_password}
+      POSTGRES_DB: ${POSTGRES_DB:-mock_interview}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./DATABASE/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./DATABASE/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql
+      - ./DATABASE/03-annotations.sql:/docker-entrypoint-initdb.d/03-annotations.sql
+      - ./DATABASE/04-roles-consent.sql:/docker-entrypoint-initdb.d/04-roles-consent.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-mock_interview}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ai-network
+
+  ml-service:
+    build:
+      context: ../ml
+      dockerfile: Dockerfile
+    container_name: aimock_ml
+    environment:
+      - PYTHONUNBUFFERED=1
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ai-network
+
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: aimock_backend
+    environment:
+      PORT: 5000
+      DB_USER: ${POSTGRES_USER:-postgres}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-postgres_password}
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ${POSTGRES_DB:-mock_interview}
+      JWT_SECRET: ${JWT_SECRET:-super_secret_jwt_key_for_dev}
+      ML_SERVICE_URL: http://ml-service:8000
+      ALLOWED_ORIGINS: http://localhost:5173,http://localhost
+    ports:
+      - "5000:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      ml-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:5000/api/health', (r) => {if(r.statusCode!==200)process.exit(1)})"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ai-network
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+        # VITE_API_URL is embedded at build time into the static React bundle.
+        # It must resolve from the end-user's browser, so it points to localhost mapped to backend.
+        VITE_API_URL: http://localhost:5000/api
+    container_name: aimock_frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - ai-network
+
+volumes:
+  postgres_data:
+
+networks:
+  ai-network:
+    driver: bridge

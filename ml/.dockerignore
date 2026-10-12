@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+data/
+results/
+notebooks/
+Dockerfile
+.dockerignore

@@ -1,0 +1,16 @@
+[
+  {
+    "test": "Original",
+    "input": "A process is a program in execution.",
+    "quality": "Excellent",
+    "score": 4.800000190734863,
+    "confidence": 0.51
+  },
+  {
+    "test": "Lightly misspelled",
+    "input": "A proces is a program in execusion.",
+    "quality": "Average",
+    "score": 4.699999809265137,
+    "confidence": 0.62
+  }
+]

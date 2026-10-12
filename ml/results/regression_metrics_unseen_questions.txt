@@ -1,0 +1,6 @@
+--- Regression Metrics (unseen_questions) ---
+MAE: 1.6599
+MSE: 5.3400
+RMSE: 2.3108
+R2 Score: 0.3907
+

@@ -1,0 +1,35 @@
+Adversarial Tests Passed: 7/15
+Adversarial Tests Failed: 8/15
+
+FAILED: 1. Short but correct
+Score: 4.5
+Input: It stores key-value pairs using a hash table for O(1) lookup.
+
+FAILED: 5. Correct answer using synonyms
+Score: 4.400000095367432
+Input: A dictionary structure that maps identifiers to values via hashing, giving constant time access.
+
+FAILED: 6. Correct answer using completely different wording
+Score: 2.200000047683716
+Input: You can save associative arrays in it. It computes an index from the object to store data fast.
+
+FAILED: 9. Excellent detailed answer
+Score: 4.0
+Input: A HashMap is a core Java collection that stores elements as key-value pairs. It uses a hashing algorithm to compute an index, providing amortized O(1) time complexity for basic operations like get and put. It allows a single null key and multiple null values, but does not guarantee iteration order.
+
+FAILED: 11. Spelling errors
+Score: 1.5
+Input: HshMp stors ke-valu pirs usng hshing. It gives 0(1) lokup.
+
+FAILED: 12. Excessive punctuation/capitalization
+Score: 3.5999999046325684
+Input: HASHMAP STORES KEY-VALUE PAIRS!!! IT HAS O(1) LOOKUP TIME!?!
+
+FAILED: 13. Irrelevant technical terminology
+Score: 4.300000190734863
+Input: HashMap uses polymorphism and inheritance to implement a REST API for the database.
+
+FAILED: 15. Contradiction / Incorrectness
+Score: 5.400000095367432
+Input: HashMap stores data sequentially in an array and does not use hashing. It provides O(N) lookup time.
+

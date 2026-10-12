@@ -1,0 +1,5 @@
+--- Calibration Report ---
+Model: Logistic Regression
+Multi-class Brier Score: 0.1382
+A lower Brier score indicates better calibration (0.0 is perfect).
+Logistic Regression generally produces well-calibrated probabilities natively.

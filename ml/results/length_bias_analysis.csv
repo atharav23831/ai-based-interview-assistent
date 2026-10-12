@@ -1,0 +1,6 @@
+case,word_count,predicted_quality,predicted_score,confidence
+A. Short technically correct answer.,10,Average,4.5,0.95
+B. Same answer expanded with irrelevant sentences.,31,Poor,4.599999904632568,0.4
+C. Same answer expanded with meaningless repetition.,30,Excellent,4.0,0.9
+D. Long technically incorrect answer.,50,Excellent,4.599999904632568,0.51
+E. Short technically excellent answer.,8,Average,4.300000190734863,0.89

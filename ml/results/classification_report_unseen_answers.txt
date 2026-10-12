@@ -1,0 +1,19 @@
+--- Classification Metrics (unseen_answers) ---
+Model: Logistic Regression
+Accuracy: 0.9936
+Macro F1: 0.9937
+Weighted F1: 0.9936
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Average       1.00      1.00      1.00        63
+   Excellent       1.00      1.00      1.00        68
+        Good       0.97      1.00      0.98        65
+        Poor       1.00      0.97      0.98        63
+   Very Poor       1.00      1.00      1.00        54
+
+    accuracy                           0.99       313
+   macro avg       0.99      0.99      0.99       313
+weighted avg       0.99      0.99      0.99       313
+

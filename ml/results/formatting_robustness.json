@@ -1,0 +1,23 @@
+[
+  {
+    "test": "Normal",
+    "input": "HashMap stores key-value pairs.",
+    "quality": "Average",
+    "score": 3.700000047683716,
+    "confidence": 0.61
+  },
+  {
+    "test": "Excessive",
+    "input": "HashMap!!! stores??? key-value pairs!!!",
+    "quality": "Good",
+    "score": 3.5999999046325684,
+    "confidence": 1.0
+  },
+  {
+    "test": "No punctuation",
+    "input": "HashMap stores key value pairs",
+    "quality": "Average",
+    "score": 3.700000047683716,
+    "confidence": 0.79
+  }
+]

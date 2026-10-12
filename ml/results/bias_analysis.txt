@@ -1,0 +1,32 @@
+--- Length Bias Analysis ---
+
+Case: A. Short technically correct answer.
+Word Count: 10
+Predicted Quality: Average
+Predicted Score: 4.5
+Confidence: 0.95
+
+Case: B. Same answer expanded with irrelevant sentences.
+Word Count: 31
+Predicted Quality: Poor
+Predicted Score: 4.599999904632568
+Confidence: 0.4
+
+Case: C. Same answer expanded with meaningless repetition.
+Word Count: 30
+Predicted Quality: Excellent
+Predicted Score: 4.0
+Confidence: 0.9
+
+Case: D. Long technically incorrect answer.
+Word Count: 50
+Predicted Quality: Excellent
+Predicted Score: 4.599999904632568
+Confidence: 0.51
+
+Case: E. Short technically excellent answer.
+Word Count: 8
+Predicted Quality: Average
+Predicted Score: 4.300000190734863
+Confidence: 0.89
+
